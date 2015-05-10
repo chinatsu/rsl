@@ -6,4 +6,5 @@ authors = ["chinatsu <lolexplode@gmail.com>"]
 [dependencies]
 hyper = "*"
 rustc-serialize = "0.3"
+ansi_term = "0.5.2"
 # soon™  getopts = "0.2"

@@ -2,11 +2,13 @@
 #![feature(collections)]
 extern crate hyper;
 extern crate rustc_serialize;
+extern crate ansi_term;
 
 use std::io;
 use std::io::prelude::*;
 use std::process::Command;
 use rustc_serialize::json::{Json, self};
+use ansi_term::Colour::{Red, Green};
 
 use hyper::Client;
 
@@ -28,7 +30,7 @@ fn main() {
 fn prompt_user (streams: Vec<Channel>) -> String {
     let mut stdin = io::stdin();
     let mut stdout = io::stdout();
-    let mut sel_stream = String::new();
+    let mut sel_stream;
     loop {
         write!(&mut stdout, "Select stream number > ");
         stdout.flush();
@@ -75,8 +77,8 @@ fn populate_list(api_response: Json) -> Vec<Channel> {
         streams.sort_by(|b, a| a.current_viewers.cmp(&b.current_viewers));
         for (i, stream) in streams.iter().enumerate() {
             println!("[{id}] {name} is playing {game}\n\t{title} | Viewers: {viewers}",
-                        id=i+1, name=stream.name, game=stream.meta_game,
-                        title=stream.title, viewers=stream.current_viewers);
+                        id=Green.paint(&format!("{}", i+1)), name=Red.paint(&stream.name), game=Green.paint(&stream.meta_game),
+                        title=Green.paint(&stream.title), viewers=stream.current_viewers);
         }
     }
     streams
