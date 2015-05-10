@@ -6,6 +6,7 @@ watch streams on srl with rsl, get it?
 * [livestreamer](http://docs.livestreamer.io/)
 * hyper
 * rustc-serialize
+* ansi_term
 
 # Config
 rsl assumes you have the following line in your livestreamer config:
