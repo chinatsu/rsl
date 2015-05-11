@@ -4,9 +4,7 @@ watch streams on srl with rsl, get it?
 
 # Dependencies
 * [livestreamer](http://docs.livestreamer.io/)
-* hyper
-* rustc-serialize
-* ansi_term
+* stuff Cargo takes care of (hyper, rustc-serialize, ansi_term)
 
 # Config
 rsl assumes you have the following line in your livestreamer config:
